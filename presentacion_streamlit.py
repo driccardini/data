@@ -162,6 +162,12 @@ def estilos() -> None:
                 padding: 14px 16px;
                 margin-bottom: 0.7rem;
             }}
+            .side-panel-slot {{
+                min-height: 185px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+            }}
             .side-title {{
                 font-size: 0.92rem;
                 font-weight: 700;
@@ -306,48 +312,14 @@ def estilos() -> None:
                 color: {ECIPSA_GRAFITO};
                 line-height: 1.35;
             }}
-            .area-grid {{
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 0.75rem;
-                margin: 0.9rem 0 1rem 0;
-            }}
-            .area-card {{
-                border: 1px solid #cfe4eb;
-                border-radius: 14px;
-                background: #ffffff;
-                padding: 0.85rem 1rem;
-                box-shadow: 0 3px 10px rgba(15,23,42,0.05);
-            }}
-            .area-card-title {{
-                font-size: 0.85rem;
-                font-weight: 700;
-                color: {ECIPSA_AZUL};
-                margin-bottom: 0.35rem;
-            }}
-            .area-card-item {{
-                font-size: 0.88rem;
+            .metric-banner {{
+                border-left: 5px solid {ECIPSA_NARANJA};
+                border-radius: 0 14px 14px 0;
+                background: #fff4ea;
                 color: {ECIPSA_GRAFITO};
-                line-height: 1.45;
-                margin: 0.18rem 0;
-            }}
-            .infra-banner {{
-                border-left: 4px solid {ECIPSA_CELESTE};
-                background: #eaf7fc;
-                border-radius: 0 12px 12px 0;
-                padding: 0.75rem 1.1rem;
-                margin-top: 0.6rem;
-            }}
-            .infra-banner-title {{
-                font-size: 0.88rem;
-                font-weight: 700;
-                color: {ECIPSA_AZUL};
-                margin-bottom: 0.3rem;
-            }}
-            .infra-banner-item {{
-                font-size: 0.88rem;
-                color: {ECIPSA_GRAFITO};
-                margin: 0.15rem 0;
+                font-size: 0.95rem;
+                font-weight: 600;
+                padding: 0.95rem 1.1rem;
             }}
             .area-grid {{
                 display: grid;
@@ -372,7 +344,82 @@ def estilos() -> None:
                 font-size: 0.88rem;
                 color: {ECIPSA_GRAFITO};
                 line-height: 1.45;
-                margin: 0.18rem 0;
+                margin: 0.2rem 0;
+            }}
+            .area-card-list {{
+                margin: 0.25rem 0 0 1.05rem;
+                padding: 0;
+            }}
+            .solution-group {{
+                border: 1px solid #b9d9e6;
+                border-radius: 18px;
+                background: linear-gradient(180deg, #f4fbfe 0%, #eef7fb 100%);
+                padding: 1rem 1rem 1.1rem 1rem;
+                box-shadow: inset 0 0 0 1px rgba(255,255,255,0.45);
+                margin: 0.9rem 0 1rem 0;
+            }}
+            .solution-group-head {{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 0.8rem;
+                margin-bottom: 0.8rem;
+                padding-bottom: 0.7rem;
+                border-bottom: 1px solid #d8eaf1;
+            }}
+            .solution-group-title {{
+                font-size: 0.96rem;
+                font-weight: 800;
+                color: {ECIPSA_AZUL};
+                margin: 0;
+            }}
+            .solution-group-sub {{
+                font-size: 0.84rem;
+                color: {ECIPSA_GRAFITO};
+                margin: 0.2rem 0 0 0;
+            }}
+            .solution-pill {{
+                border: 1px solid #b7dbe7;
+                border-radius: 999px;
+                padding: 0.28rem 0.7rem;
+                background: #ffffff;
+                color: {ECIPSA_CELESTE};
+                font-size: 0.76rem;
+                font-weight: 700;
+                white-space: nowrap;
+            }}
+            .solution-grid {{
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 0.75rem;
+            }}
+            @media (max-width: 980px) {{
+                .solution-grid {{
+                    grid-template-columns: 1fr;
+                }}
+            }}
+            .highlight-card {{
+                border: 1px solid #cfe4eb;
+                border-radius: 16px;
+                background: #ffffff;
+                padding: 1rem 1.1rem;
+                box-shadow: 0 4px 14px rgba(15,23,42,0.06);
+            }}
+            .highlight-title {{
+                font-size: 0.92rem;
+                font-weight: 800;
+                color: {ECIPSA_AZUL};
+                margin: 0 0 0.45rem 0;
+            }}
+            .highlight-list {{
+                margin: 0.2rem 0 0 1.05rem;
+                padding: 0;
+            }}
+            .highlight-item {{
+                font-size: 0.9rem;
+                color: {ECIPSA_GRAFITO};
+                line-height: 1.5;
+                margin: 0.22rem 0;
             }}
             .infra-banner {{
                 border-left: 4px solid {ECIPSA_CELESTE};
@@ -450,15 +497,14 @@ def render_hero(total: int, current: int) -> None:
 
 
 def render_panel_lateral(slide: DeckSlide) -> None:
-    icon = icono_para_slide(slide.title, slide.number)
-    titulo = escape(slide.title)
-
     if slide.number == 1:
         st.markdown(
             """
-            <div class="side-card">
-                <p class="side-title">🎯 Propósito de esta presentación</p>
-                <p class="side-sub">Comunicar los logros de 2025, el estado actual de las iniciativas estratégicas y la hoja de ruta para 2026.</p>
+            <div class="side-panel-slot">
+                <div class="side-card">
+                    <p class="side-title">🎯 Propósito de esta presentación</p>
+                    <p class="side-sub">Comunicar los logros de 2025, el estado actual de las iniciativas estratégicas y la hoja de ruta para 2026.</p>
+                </div>
             </div>
             """,
             unsafe_allow_html=True,
@@ -468,10 +514,135 @@ def render_panel_lateral(slide: DeckSlide) -> None:
     if slide.number == 2:
         st.markdown(
             """
-            <div class="side-card" style="padding: 1.2rem 1.4rem;">
-                <p class="side-title" style="font-size:1rem;margin-bottom:0.6rem;">🎯 Objetivo a lograr</p>
+            <div class="side-panel-slot">
+                <div class="side-card" style="padding: 1.2rem 1.4rem;">
+                    <p class="side-title" style="font-size:1rem;margin-bottom:0.6rem;">🎯 Objetivo</p>
+                    <p class="side-sub">Mostrar logros 2025 por área para evidenciar eficientización operativa.</p>
+                </div>
             </div>
-            <div class="metric-banner">🏆 Consolidación del área como habilitador estratégico de la organización</div>
+            """,
+            unsafe_allow_html=True,
+        )
+        return
+
+    if slide.number == 4:
+        st.markdown(
+            """
+            <div class="side-panel-slot">
+                <div class="side-card" style="padding: 1.2rem 1.4rem;">
+                    <p class="side-title" style="font-size:1rem;margin-bottom:0.6rem;">📂 Proyectos</p>
+                    <p class="side-sub">Proyectos relacionados a Data & automatizaciones.</p>
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        return
+
+    if slide.number == 5:
+        st.markdown(
+            """
+            <div class="side-panel-slot">
+                <div class="side-card" style="padding: 1.0rem 1.2rem;margin-bottom:0.8rem;">
+                    <p class="side-title" style="font-size:0.88rem;margin-bottom:0.5rem;">📐 Gobierno de Datos</p>
+                    <p style="font-size:0.78rem;color:#555;margin:0 0 0.4rem 0;">Estado</p>
+                    <div style="background:#e8edf0;border-radius:99px;height:7px;overflow:hidden;">
+                        <div style="background:#009AC4;width:20%;height:7px;border-radius:99px;"></div>
+                    </div>
+                    <p style="font-size:0.82rem;font-weight:700;color:#009AC4;margin:0.25rem 0 0 0;">20% · En inicio</p>
+                </div>
+                <div class="side-card" style="padding: 1.0rem 1.2rem;">
+                    <p class="side-title" style="font-size:0.88rem;margin-bottom:0.5rem;">🤖 Adopción de IA</p>
+                    <p style="font-size:0.78rem;color:#555;margin:0 0 0.4rem 0;">Estado</p>
+                    <div style="background:#e8edf0;border-radius:99px;height:7px;overflow:hidden;">
+                        <div style="background:#F18019;width:10%;height:7px;border-radius:99px;"></div>
+                    </div>
+                    <p style="font-size:0.82rem;font-weight:700;color:#F18019;margin:0.25rem 0 0 0;">10% · Propuesta en curso</p>
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        return
+
+    if slide.number == 6:
+        st.markdown(
+            """
+            <div class="side-panel-slot">
+                <div class="side-card" style="padding: 1.1rem 1.2rem;margin-bottom:0.8rem;">
+                    <p class="side-title" style="font-size:0.92rem;margin-bottom:0.4rem;">💰 Ahorro estimado</p>
+                    <p style="font-size:1.45rem;font-weight:800;color:#F18019;margin:0.1rem 0 0.8rem 0;">~$3.000 USD<span style="font-size:0.85rem;font-weight:500;color:#555;"> / mes</span></p>
+                    <p style="font-size:0.78rem;color:#555;margin:0 0 0.3rem 0;">Estado del proyecto</p>
+                    <div style="background:#e8edf0;border-radius:99px;height:8px;width:100%;overflow:hidden;">
+                        <div style="background:#F18019;width:15%;height:100%;border-radius:99px;"></div>
+                    </div>
+                    <p style="font-size:0.82rem;font-weight:700;color:#F18019;margin:0.3rem 0 0 0;">15%</p>
+                </div>
+                <div class="side-card" style="padding: 1.0rem 1.2rem;">
+                    <p class="side-title" style="font-size:0.88rem;margin-bottom:0.4rem;">⚙️ Mejora operativa</p>
+                    <p class="side-sub" style="margin-bottom:0.5rem;">2 herramientas centralizadas en 1 plataforma unificada.</p>
+                    <div style="display:flex;align-items:center;gap:0.5rem;">
+                        <span style="font-size:0.82rem;color:#0B3E53;font-weight:700;">🔗 Integración</span>
+                        <span style="font-size:0.78rem;background:#e8f4fb;color:#005f7f;border:1px solid #b3ddf2;border-radius:99px;padding:0.1rem 0.55rem;">Dynamics 365</span>
+                    </div>
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        return
+
+    if slide.number == 101:
+        st.markdown(
+            """
+            <div class="side-panel-slot">
+                <div class="side-card" style="padding: 1.1rem 1.2rem;">
+                    <p class="side-title" style="font-size:0.9rem;margin-bottom:0.6rem;">&#128101; Composición</p>
+                    <div style="display:flex;gap:0.6rem;margin-bottom:0.8rem;">
+                        <div style="text-align:center;flex:1;background:#e8f4fb;border-radius:8px;padding:0.5rem 0;">
+                            <p style="font-size:1.4rem;font-weight:800;color:#005f7f;margin:0;">2</p>
+                            <p style="font-size:0.72rem;color:#555;margin:0;">Internos</p>
+                        </div>
+                        <div style="text-align:center;flex:1;background:#edf7ed;border-radius:8px;padding:0.5rem 0;">
+                            <p style="font-size:1.4rem;font-weight:800;color:#2d6a2d;margin:0;">5</p>
+                            <p style="font-size:0.72rem;color:#555;margin:0;">Externos</p>
+                        </div>
+                    </div>
+                    <p style="font-size:0.78rem;color:#555;margin:0 0 0.35rem 0;font-weight:600;">Especialidades</p>
+                    <div style="display:flex;flex-wrap:wrap;gap:0.3rem;">
+                        <span style="font-size:0.72rem;background:#eef4f8;color:#0B3E53;border:1px solid #c5d9e8;border-radius:99px;padding:0.1rem 0.5rem;">BI &amp; Reporting</span>
+                        <span style="font-size:0.72rem;background:#eef4f8;color:#0B3E53;border:1px solid #c5d9e8;border-radius:99px;padding:0.1rem 0.5rem;">Data Engineering</span>
+                        <span style="font-size:0.72rem;background:#eef4f8;color:#0B3E53;border:1px solid #c5d9e8;border-radius:99px;padding:0.1rem 0.5rem;">RPA</span>
+                        <span style="font-size:0.72rem;background:#eef4f8;color:#0B3E53;border:1px solid #c5d9e8;border-radius:99px;padding:0.1rem 0.5rem;">Gov. Datos</span>
+                    </div>
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        return
+
+    if slide.number == 100:
+        st.markdown(
+            """
+            <div class="side-panel-slot">
+                <div class="side-card" style="padding: 1.2rem 1.4rem;">
+                    <p class="side-title" style="font-size:1rem;margin-bottom:0.6rem;">🏗️ Visión</p>
+                    <p class="side-sub">ECIPSA Obra Hub integra tres capacidades en una sola herramienta para centralizar la gestión de obra.</p>
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        return
+
+    st.markdown(
+        f"""
+        <div class="side-panel-slot">
+            <div class="side-card">
+                <p class="side-title">🧩 Objetivo</p>
+                <p class="side-sub">Bajar esta sección a decisiones concretas y medibles para Dirección.</p>
+            </div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -491,13 +662,414 @@ def render_cover(slide: DeckSlide) -> None:
     )
 
 
+def render_resultados(slide: DeckSlide) -> None:
+    areas = [
+        (
+            "🏦",
+            "Administración & Finanzas",
+            [
+                "6 proyectos implementados",
+                "Automatización de rescisiones SAP desde DYN",
+                "Tablero de Ingresos Financieros MA",
+                "Integración bancaria consolidada (diaria/semanal/mensual)",
+                "Notificaciones impositivas ARCA automatizadas",
+            ],
+        ),
+        (
+            "🤝",
+            "Comercial",
+            [
+                "5 tableros operacionales",
+                "Stock Natania Argentina y Paraguay",
+                "Tablero Stock y Precios MA en tiempo real",
+                "Tablero Saldo Altoplan",
+                "Cupones Natania (Real Time)",
+            ],
+        ),
+        (
+            "📞",
+            "Ecall",
+            [
+                "6 reportes críticos",
+                "Automatización cupones pendientes de pago",
+                "Reportes operativos: Retención, Ventas, NAT, MORA y Auxiliares",
+                "Integración directa con Vocalcom",
+            ],
+        ),
+        (
+            "🖥️",
+            "Modernización Tecnológica",
+            [
+                "Renovación integral de infraestructura tecnológica",
+                "Nueva Infraestructura RPA",
+                "Migración Azure con reducción de costos recurrentes",
+                "Portal de Datos Ecipsa (+20 reportes y 10 licencias menos)",
+            ],
+        ),
+    ]
+    cards_html = "".join(
+        f"""<div class='area-card'>
+                <div class='area-card-title'>{ico} {titulo}</div>
+                <ul class='area-card-list'>
+                    {''.join(f"<li class='area-card-item'>{item}</li>" for item in items)}
+                </ul>
+            </div>"""
+        for ico, titulo, items in areas
+    )
+    st.markdown(
+        f"""
+        <div class="deck-wrap">
+            <h1 class="deck-title" style="font-size:2.3rem;">📈 Iniciativas Implementadas por Área</h1>
+            <div class="area-grid">
+                {cards_html}
+            </div>
+            <div class="metric-banner">🏆 Implementaciones 2025 con automatización aplicada y trazabilidad operativa por área</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def render_logros_por_area(slide: DeckSlide) -> None:
+    bullets = [
+        "Resultados 2025 y métricas clave",
+        "Impacto transversal por áreas de negocio",
+        "Avance de transformación tecnológica",
+        "Aplicación de Inteligencia Artificial",
+        "Prioridades y decisiones para 2026",
+    ]
+
+    bullets_html = "".join(f"<li class='area-card-item'>{escape(item)}</li>" for item in bullets)
+
+    st.markdown(
+        f"""
+        <div class="deck-wrap">
+            <h1 class="deck-title" style="font-size:2.3rem;">🏢 Logros por area 2025</h1>
+            <div class="area-card">
+                <div class="area-card-title">📌 Ejes presentados en la PPTX</div>
+                <ul class="area-card-list">
+                    {bullets_html}
+                </ul>
+            </div>
+            <div class="metric-banner">🏆 Los avances de 2025 mejoraron eficiencia operativa, visibilidad de gestión y capacidad de respuesta entre áreas</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def render_areas(slide: DeckSlide) -> None:
+    proyectos = [
+        (
+            "1",
+            "Administración (99% · Validación)",
+            "Carga renta anticipada en SAP: Automatización de proceso crítico para acelerar reconocimiento de ingresos",
+        ),
+        (
+            "2",
+            "Administración (En validación)",
+            "Reporte Aportes y Saldos MA: Sincronización automática con DYN para visibilidad financiera en tiempo real",
+        ),
+        (
+            "3",
+            "Créditos & Cobranzas (30%)",
+            "Cobranzas manuales: Automatización de gestión para reducir tiempos de recuperación y liberar recursos",
+        ),
+        (
+            "4",
+            "Data (30%)",
+            "Reportes manuales: Eliminación de procesos repetitivos mediante automatización inteligente",
+        ),
+        (
+            "5",
+            "Tax (En desarrollo)",
+            "Control de impuestos: Automatización de cálculos y controles para reducir riesgo fiscal",
+        ),
+        (
+            "6",
+            "IT - IA (Implementación)",
+            "Lectura de comprobantes con IA: Bot WhatsApp que reconoce transferencias bancarias para agilizar cobranzas manuales",
+        ),
+        (
+            "7",
+            "Comercial (En curso)",
+            "Cartera de clientes: Vista 360° centralizada del cliente para mejorar experiencia y estrategia comercial",
+        ),
+    ]
+    cards_html = "".join(
+        f"""<div class='area-card'>
+                <div class='area-card-title'>#{num} {titulo}</div>
+                <ul class='area-card-list'>
+                    <li class='area-card-item'>{descripcion}</li>
+                </ul>
+            </div>"""
+        for num, titulo, descripcion in proyectos
+    )
+    st.markdown(
+        f"""
+        <div class="deck-wrap">
+            <h1 class="deck-title" style="font-size:2.3rem;">🚧 Proyectos en Desarrollo Activo</h1>
+            <div class="area-grid">
+                {cards_html}
+            </div>
+            <div class="metric-banner">🏆 Ocho iniciativas estratégicas continúan avanzando para completar la transformación digital del 2025, con foco en automatización de procesos manuales e inteligencia artificial aplicada.</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def render_genesys(slide: DeckSlide) -> None:
+    st.markdown(
+        """
+        <div class="deck-wrap">
+            <h1 class="deck-title" style="font-size:2.3rem;">📡 Genesys CX</h1>
+            <div class="solution-group">
+                <div class="solution-group-head">
+                    <div>
+                        <p class="solution-group-title">Reemplazo de Vocalcom & WISE · Canales de voz y digital</p>
+                        <p class="solution-group-sub">Unifica WhatsApp, Instagram, Facebook y voz en una sola plataforma, con IA incorporada y ahorro mensual operativo.</p>
+                    </div>
+                    <span class="solution-pill">Discovery activo</span>
+                </div>
+                <div class="solution-grid">
+                    <div class="area-card">
+                        <div class="area-card-title">🎙️ Canal de voz</div>
+                        <ul class="area-card-list">
+                            <li class="area-card-item">Revisión y mejora de flujos IVR.</li>
+                            <li class="area-card-item">Incorporación de IA en la atención por voz.</li>
+                        </ul>
+                    </div>
+                    <div class="area-card">
+                        <div class="area-card-title">💬 WhatsApp</div>
+                        <ul class="area-card-list">
+                            <li class="area-card-item">Relevamiento de bots actuales.</li>
+                            <li class="area-card-item">Revisión y mejora de procesos de atención digital.</li>
+                        </ul>
+                    </div>
+                    <div class="area-card">
+                        <div class="area-card-title">🎓 Capacitación BVS</div>
+                        <ul class="area-card-list">
+                            <li class="area-card-item">Reuniones en vivo con la consultora implementadora.</li>
+                            <li class="area-card-item">Demos y documentación de los canales.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="metric-banner">🏆 Genesys CX reemplaza Vocalcom y WISE generando ahorro mensual y habilitando IA en todos los canales de contacto.</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def render_herramienta_obra(slide: DeckSlide) -> None:
+    st.markdown(
+        """
+        <div class="deck-wrap">
+            <h1 class="deck-title" style="font-size:2.3rem;">🏗️ ECIPSA Obra Hub</h1>
+            <div class="solution-group">
+                <div class="solution-group-head">
+                    <div>
+                        <p class="solution-group-title">Portal único de gestión de obra</p>
+                        <p class="solution-group-sub">Tres capacidades incluidas dentro de una misma solución para proveedores, seguimiento y control interno.</p>
+                    </div>
+                    <span class="solution-pill">3 módulos integrados</span>
+                </div>
+                <div class="solution-grid">
+                    <div class="area-card">
+                        <div class="area-card-title">📄 1. Gestión documental</div>
+                        <ul class="area-card-list">
+                            <li class="area-card-item">Herramienta para que los proveedores puedan interactuar con Ecipsa subiendo planos y documentación necesaria para trabajar.</li>
+                        </ul>
+                    </div>
+                    <div class="area-card">
+                        <div class="area-card-title">🏗️ 2. Dirección de obra</div>
+                        <ul class="area-card-list">
+                            <li class="area-card-item">Herramienta para poder darle seguimiento a la obra constructiva y que los proveedores puedan ir actualizando el avance de la misma.</li>
+                        </ul>
+                    </div>
+                    <div class="area-card">
+                        <div class="area-card-title">💰 3. Gestión de costos de obra</div>
+                        <ul class="area-card-list">
+                            <li class="area-card-item">Herramienta interna para poder calcular los costos correctos de la obra.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="metric-banner">🏆 Estas tres herramientas van a converger en una sola solución: ECIPSA Obra Hub.</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def render_gobierno_ia(slide: DeckSlide) -> None:
+    st.markdown(
+        """
+        <div class="deck-wrap">
+            <h1 class="deck-title" style="font-size:2.1rem;">🏛️ Gobierno de Datos &amp; Adopción de IA</h1>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:0.6rem;">
+                <div class="highlight-card" style="display:flex;flex-direction:column;gap:0.5rem;">
+                    <div class="highlight-title" style="font-size:1rem;">📐 Gobierno de Datos</div>
+                    <p style="font-size:0.88rem;color:#444;margin:0 0 0.5rem 0;">Sentando las bases de trazabilidad extremo a extremo sobre los datos de ECIPSA.</p>
+                    <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.5rem;">
+                        <span style="font-size:0.78rem;background:#e8f4fb;color:#005f7f;border:1px solid #b3ddf2;border-radius:99px;padding:0.15rem 0.6rem;font-weight:600;">PureView</span>
+                        <span style="font-size:0.78rem;background:#eef4f8;color:#0B3E53;border:1px solid #c5d9e8;border-radius:99px;padding:0.15rem 0.6rem;font-weight:600;">DWH</span>
+                        <span style="font-size:0.78rem;background:#fff3e8;color:#8a4900;border:1px solid #ffd8b5;border-radius:99px;padding:0.15rem 0.6rem;font-weight:600;">Dynamics 365</span>
+                        <span style="font-size:0.78rem;background:#f0f7ff;color:#1a5fa8;border:1px solid #c2d9f5;border-radius:99px;padding:0.15rem 0.6rem;font-weight:600;">Power BI</span>
+                    </div>
+                    <ul class="highlight-list">
+                        <li class="highlight-item">Integración de PureView con el Data Warehouse, Dynamics y Power BI.</li>
+                        <li class="highlight-item">Trazabilidad completa desde el origen del dato hasta su consumo en reportes.</li>
+                        <li class="highlight-item">Base para certificación de calidad de datos en procesos críticos.</li>
+                    </ul>
+                </div>
+                <div class="highlight-card" style="display:flex;flex-direction:column;gap:0.5rem;">
+                    <div class="highlight-title" style="font-size:1rem;">🤖 Adopción de IA</div>
+                    <p style="font-size:0.88rem;color:#444;margin:0 0 0.5rem 0;">Propuesta para trasladar el uso de IA al día a día de los colaboradores en áreas clave.</p>
+                    <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.5rem;">
+                        <span style="font-size:0.78rem;background:#eef4f8;color:#0B3E53;border:1px solid #c5d9e8;border-radius:99px;padding:0.15rem 0.6rem;">📒 Contabilidad</span>
+                        <span style="font-size:0.78rem;background:#eef4f8;color:#0B3E53;border:1px solid #c5d9e8;border-radius:99px;padding:0.15rem 0.6rem;">💰 Finanzas</span>
+                        <span style="font-size:0.78rem;background:#eef4f8;color:#0B3E53;border:1px solid #c5d9e8;border-radius:99px;padding:0.15rem 0.6rem;">📊 Control de Gestión</span>
+                        <span style="font-size:0.78rem;background:#eef4f8;color:#0B3E53;border:1px solid #c5d9e8;border-radius:99px;padding:0.15rem 0.6rem;">👥 RRHH</span>
+                        <span style="font-size:0.78rem;background:#eef4f8;color:#0B3E53;border:1px solid #c5d9e8;border-radius:99px;padding:0.15rem 0.6rem;">🔔 Cobranzas</span>
+                    </div>
+                    <ul class="highlight-list">
+                        <li class="highlight-item">Definir propuesta de adopción con foco en productividad operativa.</li>
+                        <li class="highlight-item">Capacitación y acompañamiento por área, comenzando por las candidatas identificadas.</li>
+                        <li class="highlight-item">Métricas de adopción y seguimiento de impacto por equipo.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def render_equipo(slide: DeckSlide) -> None:
+    _seniority_order = {"Senior": 0, "Semi Senior": 1, "Junior": 2}
+
+    _internos = sorted([
+        ("Romina Meade",       "Responsable de Reporting",    "Senior",      ["Portal de Datos", "Genesys", "Portal Proveedores", "Autom. Ecall", "Autom. Bancarias", "Integr. SAP", "Costo de Obra"]),
+        ("Agust\u00edn Contreras", "Analista Senior de Datos",    "Senior",      ["Portal de Datos", "Integraciones SAP", "Gob. de Datos"]),
+    ], key=lambda x: _seniority_order.get(x[2], 9))
+
+    _externos = sorted([
+        ("Florencia Olmedo",   "Desarrolladora BI",            "Semi Senior", ["Tableros MA", "Tableros Comercial", "Portal Licitaciones", "Tableros Ecall", "Tableros MKT"]),
+        ("Mateo Cuenca",       "Ingeniero de Datos",           "Semi Senior", ["Integr. SAP", "Integr. ARCA", "Integr. NITRO", "WhatsApp Business"]),
+        ("Mat\u00edas Cattaneo",   "Desarrollador BI & Gob. Datos", "Junior",      ["Tableros Ecall", "Gob. Datos \u00b7 Pureview", "Cat\u00e1logos Power BI"]),
+        ("Maximiliano Rivera", "Desarrollador BI",             "Junior",      ["Tableros Power BI", "Reporte Postventa"]),
+        ("Alan Riquelmes",     "Automatizaciones RPA",         "Junior",      ["Extractos Bancarios", "Chatbot Cobranzas", "Chatbot C-Level"]),
+    ], key=lambda x: _seniority_order.get(x[2], 9))
+
+    def _card(nombre, rol, seniority, proyectos, _bg):
+        pills = "".join(
+            f"<span style='font-size:0.66rem;background:#eef4f8;color:#0B3E53;border-radius:4px;padding:0.07rem 0.36rem;'>{p}</span>"
+            for p in proyectos
+        )
+        sen_col = {"Senior": "#c07000", "Semi Senior": "#005f7f", "Junior": "#3a7a3a"}.get(seniority, "#555")
+        sen_bg  = {"Senior": "#fff3e0", "Semi Senior": "#e8f4fb", "Junior": "#edf7ed"}.get(seniority, "#eee")
+        return f"""
+        <div class="highlight-card" style="padding:0.75rem 0.9rem;">
+            <span style="font-size:0.88rem;font-weight:800;color:#0B3E53;display:block;margin-bottom:0.18rem;">{nombre}</span>
+            <p style="font-size:0.73rem;color:#666;margin:0 0 0.35rem 0;">{rol}</p>
+            <span style="font-size:0.67rem;background:{sen_bg};color:{sen_col};border-radius:99px;padding:0.07rem 0.42rem;font-weight:600;">{seniority}</span>
+            <div style="display:flex;flex-wrap:wrap;gap:0.25rem;margin-top:0.4rem;">{pills}</div>
+        </div>"""
+
+    internos_html = "".join(_card(*p, "") for p in _internos)
+    externos_html = "".join(_card(*p, "") for p in _externos)
+
+    st.markdown(
+        f"""
+        <div class="deck-wrap">
+            <h1 class="deck-title" style="font-size:2rem;">\U0001f465 Equipo Data &amp; Automatizaciones</h1>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:0.5rem;">
+                <div>
+                    <p style="font-size:0.78rem;font-weight:800;color:#005f7f;text-transform:uppercase;letter-spacing:0.07em;margin:0 0 0.55rem 0;border-bottom:2px solid #b3ddf2;padding-bottom:0.25rem;">\U0001f7e6 Planta Interna &mdash; 2 colaboradores</p>
+                    <div style="display:flex;flex-direction:column;gap:0.6rem;">{internos_html}</div>
+                </div>
+                <div>
+                    <p style="font-size:0.78rem;font-weight:800;color:#2d6a2d;text-transform:uppercase;letter-spacing:0.07em;margin:0 0 0.55rem 0;border-bottom:2px solid #b5d8b5;padding-bottom:0.25rem;">\U0001f7e9 Equipo Externo &mdash; 5 colaboradores</p>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;">{externos_html}</div>
+                </div>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def render_portal_proveedores(slide: DeckSlide) -> None:
+    st.markdown(
+        """
+        <div class="deck-wrap">
+            <h1 class="deck-title" style="font-size:2.3rem;">🤝 Nuevo portal de proveedores</h1>
+            <div class="area-grid">
+                <div class="highlight-card">
+                    <div class="highlight-title">📍 Status actual</div>
+                    <ul class="highlight-list">
+                        <li class="highlight-item">Pruebas piloto con proveedores en curso.</li>
+                        <li class="highlight-item">Estrategia de go live en definición junto al equipo de Comunicaciones.</li>
+                        <li class="highlight-item">Validación interna de los procesos de aprobación.</li>
+                    </ul>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-title">⏳ Pendientes clave</div>
+                    <ul class="highlight-list">
+                        <li class="highlight-item">Terminar validaciones de comprobantes de Paraguay.</li>
+                        <li class="highlight-item">Completar el proceso automático de alta de proveedores.</li>
+                    </ul>
+                </div>
+                <div class="highlight-card" style="grid-column: 1 / -1;">
+                    <div class="highlight-title">🏆 Logros esperados</div>
+                    <ul class="highlight-list">
+                        <li class="highlight-item">Prescindir de estudios contables que hoy cargan facturas en Argentina y próximamente en Paraguay.</li>
+                        <li class="highlight-item">Integración completa con SAP.</li>
+                        <li class="highlight-item">Mejor gestión integral de proveedores.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="metric-banner">🏆 Implementación orientada a digitalizar punta a punta la relación con proveedores, con mayor control, trazabilidad e integración operativa.</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 def render_slide(slide: DeckSlide, total: int) -> None:
     if slide.number == 1:
         render_cover(slide)
         return
 
     if slide.number == 2:
+        render_logros_por_area(slide)
+        return
+
+    if slide.number == 3:
         render_resultados(slide)
+        return
+
+    if slide.number == 4:
+        render_areas(slide)
+        return
+
+    if slide.number == 5:
+        render_gobierno_ia(slide)
+        return
+
+    if slide.number == 6:
+        render_genesys(slide)
+        return
+
+    if slide.number == 101:
+        render_equipo(slide)
+        return
+
+    if slide.number == 100:
+        render_herramienta_obra(slide)
         return
 
     tam_bullet = "1.35rem"
@@ -624,7 +1196,19 @@ def app() -> None:
         st.error("No se encontró la presentación corporativa base en la carpeta del proyecto.")
         st.stop()
 
-    slides = extraer_deck(pptx_path)
+    _all = [s for s in extraer_deck(pptx_path) if s.number != 2]
+    piso_herramienta_obra = DeckSlide(
+        number=100,
+        title="ECIPSA Obra Hub",
+        bullets=["Mil Aires (En análisis)", "Herramienta dirección de obra: Evaluación de soluciones SAAS vs desarrollo a medida"],
+    )
+    piso_equipo = DeckSlide(number=101, title="Equipo", bullets=[])
+    _by_num = {s.number: s for s in _all}
+    _front_order = [1, 3, 4, 5, 6]
+    _base = [_by_num[n] for n in _front_order if n in _by_num]
+    slides = [_base[0], piso_equipo] + _base[1:]
+    slides.append(piso_herramienta_obra)
+    slides += [s for s in _all if s.number not in _front_order]
     total = len(slides)
 
     if "slide_idx" not in st.session_state:
