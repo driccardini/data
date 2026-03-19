@@ -1269,6 +1269,18 @@ def app() -> None:
     slides = [_base[0], piso_equipo] + _base[1:]
     slides.append(piso_herramienta_obra)
     slides.append(piso_roadmap)
+    # Piso 8: Pilares estratégicos
+    piso_pilares = DeckSlide(
+        number=102,
+        title="Pilares Estratégicos 2026",
+        bullets=[
+            "⚡ Eficiencia: Optimización de recursos y procesos para mayor productividad y menores costos.",
+            "🏛️ Gobierno de Dato: Calidad, trazabilidad y seguridad de la información en todos los procesos.",
+            "🤖 Automatizaciones: Soluciones automáticas para reducir tareas manuales y acelerar flujos de trabajo.",
+            "💡 Valor a Procesos de las Áreas: Mejoras tangibles en procesos clave de cada área, generando impacto real en la operación diaria."
+        ]
+    )
+    slides.append(piso_pilares)
     slides += [s for s in _all if s.number not in _front_order]
     total = len(slides)
 
