@@ -867,12 +867,7 @@ def render_herramienta_obra(slide: DeckSlide) -> None:
     st.markdown(
         """
         <div class="deck-wrap">
-            <div style='display:flex;justify-content:space-between;align-items:flex-start;'>
-                <h1 class="deck-title" style="font-size:2.3rem;">🏗️ ECIPSA Obra Hub</h1>
-                <div style='max-width:340px;text-align:right;margin-left:2.5rem;'>
-                    <span style='font-size:1.05rem;font-weight:600;color:#0B3E53;'>Como desarrolladores líderes en real estate, buscamos que la gestión documental, el control de obra y la administración de costos sean procesos integrados, eficientes y a la altura de las mejores prácticas del sector.</span>
-                </div>
-            </div>
+            <h1 class="deck-title" style="font-size:2.3rem;">🏗️ ECIPSA Obra Hub</h1>
             <div class="solution-group">
                 <div class="solution-group-head">
                     <div>
