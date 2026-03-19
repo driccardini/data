@@ -1086,6 +1086,94 @@ def render_roadmap_2026(slide: DeckSlide) -> None:
     )
 
 def render_slide(slide: DeckSlide, total: int) -> None:
+    # Piso 9: Módulos principales del portal de datos ECIPSA
+    if slide.number == 103:
+            st.markdown(
+                f"""
+                <div class='deck-wrap'>
+                    <h1 class='deck-title' style='font-size:2.2rem;text-align:center;'>📊 Portal de Datos ECIPSA: Módulos Principales</h1>
+                    <div style='display:grid;grid-template-columns:repeat(2,1fr);gap:2.1rem;max-width:900px;margin:2.5rem auto 1.2rem auto;'>
+                        <div class='highlight-card' style='text-align:center;'>
+                            <div class='highlight-title' style='font-size:1.15rem;'>Natania AR</div>
+                            <img src='https://ecipsadatos.azurewebsites.net/static/images/Boton_Natania.png' alt='Natania AR' style='height:54px;margin:0.7rem auto 0.5rem auto;'/>
+                            <div class='highlight-item'>Acceso a reportes y tableros de Argentina</div>
+                        </div>
+                        <div class='highlight-card' style='text-align:center;'>
+                            <div class='highlight-title' style='font-size:1.15rem;'>Natania PY</div>
+                            <img src='https://ecipsadatos.azurewebsites.net/static/images/Boton_Natania_PY.png' alt='Natania PY' style='height:54px;margin:0.7rem auto 0.5rem auto;'/>
+                            <div class='highlight-item'>Reportes y tableros de Paraguay</div>
+                        </div>
+                        <div class='highlight-card' style='text-align:center;'>
+                            <div class='highlight-title' style='font-size:1.15rem;'>MilAires</div>
+                            <img src='https://ecipsadatos.azurewebsites.net/static/images/Boton_MilAires.png' alt='MilAires' style='height:54px;margin:0.7rem auto 0.5rem auto;'/>
+                            <div class='highlight-item'>Tableros y métricas de MilAires</div>
+                        </div>
+                        <div class='highlight-card' style='text-align:center;'>
+                            <div class='highlight-title' style='font-size:1.15rem;'>Ecipsa Report</div>
+                            <img src='https://ecipsadatos.azurewebsites.net/static/images/Boton_ECIPSA.png' alt='Ecipsa Report' style='height:54px;margin:0.7rem auto 0.5rem auto;'/>
+                            <div class='highlight-item'>Reportes corporativos y de gestión</div>
+                        </div>
+                        <div class='highlight-card' style='text-align:center;'>
+                            <div class='highlight-title' style='font-size:1.15rem;'>Tableros Manuales</div>
+                            <img src='https://ecipsadatos.azurewebsites.net/static/images/Tableros%20Manuales.png' alt='Tableros Manuales' style='height:54px;margin:0.7rem auto 0.5rem auto;'/>
+                            <div class='highlight-item'>Carga y visualización de tableros manuales</div>
+                        </div>
+                        <div class='highlight-card' style='text-align:center;'>
+                            <div class='highlight-title' style='font-size:1.15rem;'>Panel de Administración</div>
+                            <img src='https://ecipsadatos.azurewebsites.net/static/images/ModuloAdministrador.png' alt='Panel de Administración' style='height:54px;margin:0.7rem auto 0.5rem auto;'/>
+                            <div class='highlight-item'>Gestión de usuarios, permisos y configuraciones (solo administradores)</div>
+                        </div>
+                        <div class='highlight-card' style='text-align:center;'>
+                            <div class='highlight-title' style='font-size:1.15rem;'>DataMart</div>
+                            <img src='https://ecipsadatos.azurewebsites.net/static/images/ModuloDataMart.png' alt='DataMart' style='height:54px;margin:0.7rem auto 0.5rem auto;'/>
+                            <div class='highlight-item'>Centro de módulos y acceso especial a datos</div>
+                        </div>
+                    </div>
+                    <div class='metric-banner' style='margin-top:2.2rem;'>🔑 Acceso a módulos según permisos y perfil de usuario.</div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+            return
+
+    # Piso 10: Funcionalidades y experiencia de usuario del portal
+    if slide.number == 104:
+            st.markdown(
+                f"""
+                <div class='deck-wrap'>
+                    <h1 class='deck-title' style='font-size:2.2rem;text-align:center;'>✨ Portal de Datos ECIPSA: Funcionalidades y Experiencia</h1>
+                    <div style='display:grid;grid-template-columns:1fr 1fr;gap:2.1rem;max-width:900px;margin:2.5rem auto 1.2rem auto;'>
+                        <div class='highlight-card'>
+                            <div class='highlight-title'>🎨 Cambio de tema</div>
+                            <div class='highlight-item'>Alternancia entre modo claro y oscuro para mejor visualización.</div>
+                        </div>
+                        <div class='highlight-card'>
+                            <div class='highlight-title'>💬 Buzón de comentarios flotante</div>
+                            <div class='highlight-item'>Envío de sugerencias y feedback desde cualquier pantalla.</div>
+                        </div>
+                        <div class='highlight-card'>
+                            <div class='highlight-title'>👤 Bienvenida personalizada</div>
+                            <div class='highlight-item'>Mensaje de bienvenida con el nombre del usuario al ingresar.</div>
+                        </div>
+                        <div class='highlight-card'>
+                            <div class='highlight-title'>🚪 Cierre de sesión seguro</div>
+                            <div class='highlight-item'>Botón de logout visible en todo momento.</div>
+                        </div>
+                        <div class='highlight-card'>
+                            <div class='highlight-title'>🔔 Notificaciones emergentes</div>
+                            <div class='highlight-item'>Mensajes toast personalizados para avisos y confirmaciones.</div>
+                        </div>
+                        <div class='highlight-card'>
+                            <div class='highlight-title'>🔒 Acceso por permisos</div>
+                            <div class='highlight-item'>Panel de administración y DataMart solo visibles para usuarios autorizados.</div>
+                        </div>
+                    </div>
+                    <div class='metric-banner' style='margin-top:2.2rem;'>🌐 Experiencia moderna, segura y centrada en el usuario.</div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+            return
     if slide.number == 1:
         render_cover(slide)
         return
@@ -1316,6 +1404,21 @@ def app() -> None:
     )
     slides.append(piso_pilares)
     slides += [s for s in _all if s.number not in _front_order]
+
+    # Agregar slides piso 9 y 10 del portal de datos
+    piso_portal_modulos = DeckSlide(
+        number=103,
+        title="Portal de Datos ECIPSA: Módulos Principales",
+        bullets=[],
+    )
+    piso_portal_func = DeckSlide(
+        number=104,
+        title="Portal de Datos ECIPSA: Funcionalidades y Experiencia",
+        bullets=[],
+    )
+
+    slides.append(piso_portal_modulos)
+    slides.append(piso_portal_func)
     total = len(slides)
 
     if "slide_idx" not in st.session_state:
