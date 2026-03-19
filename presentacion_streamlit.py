@@ -877,7 +877,7 @@ def render_herramienta_obra(slide: DeckSlide) -> None:
                     <span class="solution-pill">3 módulos integrados</span>
                 </div>
                 <div class="solution-grid" style="align-items:end;">
-                    <div class="area-card" style="display:flex;flex-direction:column;justify-content:flex-end;height:170px;">
+                    <div class="area-card">
                         <div class="area-card-title">📄 1. Gestión documental</div>
                         <ul class="area-card-list">
                             <li class="area-card-item">Herramienta para que los proveedores puedan interactuar con Ecipsa subiendo planos y documentación necesaria para trabajar.</li>
@@ -889,7 +889,7 @@ def render_herramienta_obra(slide: DeckSlide) -> None:
                             </div>
                         </div>
                     </div>
-                    <div class="area-card" style="display:flex;flex-direction:column;justify-content:flex-end;height:170px;">
+                    <div class="area-card">
                         <div class="area-card-title">🏗️ 2. Dirección de obra</div>
                         <ul class="area-card-list">
                             <li class="area-card-item">Herramienta para poder darle seguimiento a la obra constructiva y que los proveedores puedan ir actualizando el avance de la misma.</li>
@@ -901,7 +901,7 @@ def render_herramienta_obra(slide: DeckSlide) -> None:
                             </div>
                         </div>
                     </div>
-                    <div class="area-card" style="display:flex;flex-direction:column;justify-content:flex-end;height:170px;">
+                    <div class="area-card">
                         <div class="area-card-title">💰 3. Gestión de costos de obra</div>
                         <ul class="area-card-list">
                             <li class="area-card-item">Herramienta interna para poder calcular los costos correctos de la obra.</li>
