@@ -636,8 +636,8 @@ def render_panel_lateral(slide: DeckSlide) -> None:
         )
         return
 
-    # Hide 'Objetivo' card on last slide (Terraza, slide.number == 102)
-    if slide.number != 102:
+    # Hide 'Objetivo' card on last slide (Terraza, slide.number == 999)
+    if slide.number != 999:
         st.markdown(
             f"""
             <div class="side-panel-slot">
