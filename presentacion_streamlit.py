@@ -986,13 +986,13 @@ def render_equipo(slide: DeckSlide) -> None:
         f"""
         <div class="deck-wrap">
             <h1 class="deck-title" style="font-size:2rem;">\U0001f465 Equipo Data &amp; Automatizaciones</h1>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:0.5rem;">
+            <div style="display:flex;flex-direction:column;gap:1.2rem;margin-top:0.5rem;">
                 <div>
                     <p style="font-size:0.78rem;font-weight:800;color:#005f7f;text-transform:uppercase;letter-spacing:0.07em;margin:0 0 0.55rem 0;border-bottom:2px solid #b3ddf2;padding-bottom:0.25rem;">\U0001f7e6 Planta Interna &mdash; 2 colaboradores</p>
                     <div style="display:flex;flex-direction:column;gap:0.6rem;">{internos_html}</div>
                 </div>
                 <div>
-                    <p style="font-size:0.78rem;font-weight:800;color:#2d6a2d;text-transform:uppercase;letter-spacing:0.07em;margin:0 0 0.55rem 0;border-bottom:2px solid #b5d8b5;padding-bottom:0.25rem;">\U0001f7e9 Equipo Externo &mdash; 5 colaboradores</p>
+                    <p style="font-size:0.78rem;font-weight:800;color:#2d6a2d;text-transform:uppercase;letter-spacing:0.07em;margin:1.2rem 0 0.55rem 0;border-bottom:2px solid #b5d8b5;padding-bottom:0.25rem;">\U0001f7e9 Equipo Externo &mdash; 5 colaboradores</p>
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;">{externos_html}</div>
                 </div>
             </div>
