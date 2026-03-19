@@ -628,7 +628,7 @@ def render_panel_lateral(slide: DeckSlide) -> None:
             <div class="side-panel-slot">
                 <div class="side-card" style="padding: 1.2rem 1.4rem;">
                     <p class="side-title" style="font-size:1rem;margin-bottom:0.6rem;">🏗️ Visión</p>
-                    <p class="side-sub">ECIPSA Obra Hub integra tres capacidades en una sola herramienta para centralizar la gestión de obra.</p>
+                    <p class="side-sub">Como desarrolladores líderes en real estate, buscamos que la gestión documental, el control de obra y la administración de costos sean procesos integrados, eficientes y a la altura de las mejores prácticas del sector.</p>
                 </div>
             </div>
             """,
