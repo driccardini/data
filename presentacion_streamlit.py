@@ -1057,6 +1057,38 @@ def render_portal_proveedores(slide: DeckSlide) -> None:
     )
 
 
+def render_roadmap_2026(slide: DeckSlide) -> None:
+    # Fondo sutil y emojis de construcción, sin tocar estilos globales
+    st.markdown(
+        f"""
+        <div class="deck-wrap" style="position:relative;overflow:hidden;min-height:60vh;">
+            <img src='https://www.ecipsa.com/wp-content/uploads/2021/06/Tower.jpg' alt='Fondo Roadmap' style='position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.13;z-index:0;pointer-events:none;'>
+            <div style="position:relative;z-index:1;">
+                <h1 class="deck-title" style="font-size:2.3rem;">🛣️ Roadmap 2026</h1>
+                <div style="display:flex;flex-direction:row;justify-content:center;gap:2.5rem;margin:2.2rem 0 1.2rem 0;flex-wrap:wrap;">
+                    <div style="text-align:center;min-width:160px;">
+                        <span style="font-size:2.2rem;">🏗️</span>
+                        <div style="font-size:1.1rem;font-weight:700;margin-top:0.5rem;">Infraestructura</div>
+                        <div style="font-size:0.95rem;color:#2E2F2F;margin-top:0.2rem;">Modernización de sistemas y plataformas clave</div>
+                    </div>
+                    <div style="text-align:center;min-width:160px;">
+                        <span style="font-size:2.2rem;">🤖</span>
+                        <div style="font-size:1.1rem;font-weight:700;margin-top:0.5rem;">IA & Automatización</div>
+                        <div style="font-size:0.95rem;color:#2E2F2F;margin-top:0.2rem;">Expansión de inteligencia artificial en procesos críticos</div>
+                    </div>
+                    <div style="text-align:center;min-width:160px;">
+                        <span style="font-size:2.2rem;">🏢</span>
+                        <div style="font-size:1.1rem;font-weight:700;margin-top:0.5rem;">Gestión Integrada</div>
+                        <div style="font-size:0.95rem;color:#2E2F2F;margin-top:0.2rem;">Unificación de gestión documental y control de obra</div>
+                    </div>
+                </div>
+                <div class="metric-banner" style="margin-top:2.2rem;">🚧 En construcción: El 2026 será el año de consolidación digital y eficiencia operativa en ECIPSA.</div>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
 def render_slide(slide: DeckSlide, total: int) -> None:
     if slide.number == 1:
         render_cover(slide)
@@ -1080,6 +1112,10 @@ def render_slide(slide: DeckSlide, total: int) -> None:
 
     if slide.number == 6:
         render_genesys(slide)
+        return
+
+    if slide.number == 99:
+        render_roadmap_2026(slide)
         return
 
     if slide.number == 101:
@@ -1215,6 +1251,11 @@ def app() -> None:
         st.stop()
 
     _all = [s for s in extraer_deck(pptx_path) if s.number != 2]
+    piso_roadmap = DeckSlide(
+        number=99,
+        title="Roadmap 2026",
+        bullets=["Infraestructura: Modernización de sistemas y plataformas clave", "IA & Automatización: Expansión de inteligencia artificial en procesos críticos", "Gestión Integrada: Unificación de gestión documental y control de obra"],
+    )
     piso_herramienta_obra = DeckSlide(
         number=100,
         title="ECIPSA Obra Hub",
@@ -1224,7 +1265,7 @@ def app() -> None:
     _by_num = {s.number: s for s in _all}
     _front_order = [1, 3, 4, 5, 6]
     _base = [_by_num[n] for n in _front_order if n in _by_num]
-    slides = [_base[0], piso_equipo] + _base[1:]
+    slides = [_base[0], piso_equipo, piso_roadmap] + _base[1:]
     slides.append(piso_herramienta_obra)
     slides += [s for s in _all if s.number not in _front_order]
     total = len(slides)
