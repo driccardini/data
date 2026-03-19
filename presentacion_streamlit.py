@@ -867,7 +867,12 @@ def render_herramienta_obra(slide: DeckSlide) -> None:
     st.markdown(
         """
         <div class="deck-wrap">
-            <h1 class="deck-title" style="font-size:2.3rem;">🏗️ ECIPSA Obra Hub</h1>
+            <div style='display:flex;justify-content:space-between;align-items:flex-start;'>
+                <h1 class="deck-title" style="font-size:2.3rem;">🏗️ ECIPSA Obra Hub</h1>
+                <div style='max-width:340px;text-align:right;margin-left:2.5rem;'>
+                    <span style='font-size:1.05rem;font-weight:600;color:#0B3E53;'>Como desarrolladores líderes en real estate, buscamos que la gestión documental, el control de obra y la administración de costos sean procesos integrados, eficientes y a la altura de las mejores prácticas del sector.</span>
+                </div>
+            </div>
             <div class="solution-group">
                 <div class="solution-group-head">
                     <div>
@@ -876,37 +881,37 @@ def render_herramienta_obra(slide: DeckSlide) -> None:
                     </div>
                     <span class="solution-pill">3 módulos integrados</span>
                 </div>
-                <div class="solution-grid">
-                    <div class="area-card">
+                <div class="solution-grid" style="align-items:end;">
+                    <div class="area-card" style="display:flex;flex-direction:column;justify-content:flex-end;height:170px;">
                         <div class="area-card-title">📄 1. Gestión documental</div>
                         <ul class="area-card-list">
                             <li class="area-card-item">Herramienta para que los proveedores puedan interactuar con Ecipsa subiendo planos y documentación necesaria para trabajar.</li>
                         </ul>
-                        <div style='margin-top:0.5rem;'>
+                        <div style='margin-top:auto;'>
                             <span style='font-size:0.85rem;font-weight:700;color:#009AC4;'>70% · Relevado, con propuestas comerciales de 3 proveedores</span>
                             <div style='background:#e8edf0;border-radius:99px;height:7px;overflow:hidden;margin-top:0.18rem;'>
                                 <div style='background:#009AC4;width:70%;height:7px;border-radius:99px;'></div>
                             </div>
                         </div>
                     </div>
-                    <div class="area-card">
+                    <div class="area-card" style="display:flex;flex-direction:column;justify-content:flex-end;height:170px;">
                         <div class="area-card-title">🏗️ 2. Dirección de obra</div>
                         <ul class="area-card-list">
                             <li class="area-card-item">Herramienta para poder darle seguimiento a la obra constructiva y que los proveedores puedan ir actualizando el avance de la misma.</li>
                         </ul>
-                        <div style='margin-top:0.5rem;'>
+                        <div style='margin-top:auto;'>
                             <span style='font-size:0.85rem;font-weight:700;color:#F18019;'>15% · En análisis junto con el equipo de obra de Córdoba</span>
                             <div style='background:#e8edf0;border-radius:99px;height:7px;overflow:hidden;margin-top:0.18rem;'>
                                 <div style='background:#F18019;width:15%;height:7px;border-radius:99px;'></div>
                             </div>
                         </div>
                     </div>
-                    <div class="area-card">
+                    <div class="area-card" style="display:flex;flex-direction:column;justify-content:flex-end;height:170px;">
                         <div class="area-card-title">💰 3. Gestión de costos de obra</div>
                         <ul class="area-card-list">
                             <li class="area-card-item">Herramienta interna para poder calcular los costos correctos de la obra.</li>
                         </ul>
-                        <div style='margin-top:0.5rem;'>
+                        <div style='margin-top:auto;'>
                             <span style='font-size:0.85rem;font-weight:700;color:#0B3E53;'>20% · En análisis</span>
                             <div style='background:#e8edf0;border-radius:99px;height:7px;overflow:hidden;margin-top:0.18rem;'>
                                 <div style='background:#0B3E53;width:20%;height:7px;border-radius:99px;'></div>
