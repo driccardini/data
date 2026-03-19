@@ -812,7 +812,7 @@ def render_areas(slide: DeckSlide) -> None:
             <div class="area-grid">
                 {cards_html}
             </div>
-            <div class="metric-banner">🏆 Ocho iniciativas estratégicas continúan avanzando para completar la transformación digital del 2025, con foco en automatización de procesos manuales e inteligencia artificial aplicada.</div>
+            <div class="metric-banner">🏆 Siete iniciativas estratégicas continúan avanzando para completar la transformación digital del 2025, con foco en automatización de procesos manuales e inteligencia artificial aplicada.</div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -1137,56 +1137,7 @@ def render_slide(slide: DeckSlide, total: int) -> None:
             return
 
     # Slides detallados para cada módulo del portal de datos ECIPSA
-    modulo_slides = {
-        105: {
-            "nombre": "Natania AR",
-            "img": "https://ecipsadatos.azurewebsites.net/static/images/Boton_Natania.png",
-            "desc": "Acceso a reportes y tableros de Argentina. Información financiera, comercial y operativa centralizada para la gestión local.",
-        },
-        106: {
-            "nombre": "Natania PY",
-            "img": "https://ecipsadatos.azurewebsites.net/static/images/Boton_Natania_PY.png",
-            "desc": "Reportes y tableros de Paraguay. Seguimiento de ventas, cobranzas y métricas clave para la operación en Paraguay.",
-        },
-        107: {
-            "nombre": "MilAires",
-            "img": "https://ecipsadatos.azurewebsites.net/static/images/Boton_MilAires.png",
-            "desc": "Tableros y métricas de MilAires. Visualización de KPIs y reportes específicos del proyecto MilAires.",
-        },
-        108: {
-            "nombre": "Ecipsa Report",
-            "img": "https://ecipsadatos.azurewebsites.net/static/images/Boton_ECIPSA.png",
-            "desc": "Reportes corporativos y de gestión. Información consolidada para la toma de decisiones estratégicas.",
-        },
-        109: {
-            "nombre": "Tableros Manuales",
-            "img": "https://ecipsadatos.azurewebsites.net/static/images/Tableros%20Manuales.png",
-            "desc": "Carga y visualización de tableros manuales. Permite incorporar reportes personalizados fuera de los sistemas automáticos.",
-        },
-        110: {
-            "nombre": "Panel de Administración",
-            "img": "https://ecipsadatos.azurewebsites.net/static/images/ModuloAdministrador.png",
-            "desc": "Gestión de usuarios, permisos y configuraciones. Acceso restringido a administradores para el control del portal.",
-        },
-        111: {
-            "nombre": "DataMart",
-            "img": "https://ecipsadatos.azurewebsites.net/static/images/ModuloDataMart.png",
-            "desc": "Centro de módulos y acceso especial a datos. Herramienta avanzada para análisis y extracción de información.",
-        },
-    }
-    if slide.number in modulo_slides:
-        m = modulo_slides[slide.number]
-        st.markdown(
-            f"""
-            <div class='deck-wrap' style='display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;'>
-                <img src='{m['img']}' alt='{m['nombre']}' style='height:70px;margin-bottom:1.2rem;border-radius:14px;box-shadow:0 2px 12px rgba(11,62,83,0.08);'/>
-                <h1 class='deck-title' style='font-size:2.1rem;text-align:center;margin-bottom:0.7rem;'>{escape(m['nombre'])}</h1>
-                <div class='highlight-card' style='max-width:520px;margin:0 auto;font-size:1.13rem;text-align:center;'>{escape(m['desc'])}</div>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
-        return
+    # ...existing code...
 
     # Piso 10: Funcionalidades y experiencia de usuario del portal
     if slide.number == 104:
@@ -1455,7 +1406,14 @@ def app() -> None:
         ]
     )
     slides.append(piso_pilares)
-    slides += [s for s in _all if s.number not in _front_order]
+    # Eliminar slides de IA Aplicada, Riesgos Clave, Roadmap 2026 (piso 11), y Decisiones Solicitadas a Dirección
+    TITULOS_A_BORRAR = [
+        "Inteligencia Artificial Aplicada",
+        "⚠️ Riesgos Clave y Mitigación",
+        "🛣️ Roadmap 2026",
+        "✅ Decisiones Solicitadas a Dirección"
+    ]
+    slides += [s for s in _all if s.number not in _front_order and s.title.strip() not in TITULOS_A_BORRAR]
 
     # Agregar slides piso 9 y 10 del portal de datos
     piso_portal_modulos = DeckSlide(
@@ -1479,44 +1437,11 @@ def app() -> None:
         DeckSlide(number=106, title="Natania PY", bullets=[]),
         DeckSlide(number=107, title="MilAires", bullets=[]),
         DeckSlide(number=108, title="Ecipsa Report", bullets=[]),
-        DeckSlide(number=109, title="Tableros Manuales", bullets=[]),
-        DeckSlide(number=110, title="Panel de Administración", bullets=[]),
-        DeckSlide(number=111, title="DataMart", bullets=[]),
     ]
     slides.extend(modulo_slides)
     total = len(slides)
     if "slide_idx" not in st.session_state:
         st.session_state.slide_idx = 0
-
-    # Procesar navegacion ANTES de renderizar para que la slide correcta aparezca al primer click
-    if st.session_state.get("_nav") == "prev":
-        st.session_state.slide_idx = max(0, st.session_state.slide_idx - 1)
-        del st.session_state["_nav"]
-    elif st.session_state.get("_nav") == "next":
-        st.session_state.slide_idx = min(total - 1, st.session_state.slide_idx + 1)
-        del st.session_state["_nav"]
-
-    render_fondo_app(FONDO_TOWER)
-
-
-    content_l, content_r = st.columns([3.2, 1.2])
-    with content_l:
-        render_slide(slides[st.session_state.slide_idx], total)
-    with content_r:
-        render_panel_lateral(slides[st.session_state.slide_idx])
-        render_navegacion_obra(st.session_state.slide_idx + 1, total)
-        nav_l, _, nav_r = st.columns([1, 1.2, 1])
-        with nav_l:
-            if st.button("◀", use_container_width=True):
-                st.session_state["_nav"] = "prev"
-                st.rerun()
-        with nav_r:
-            if st.button("▶", use_container_width=True):
-                st.session_state["_nav"] = "next"
-                st.rerun()
-
-    st.progress((st.session_state.slide_idx + 1) / total)
-
-
-if __name__ == "__main__":
+    
+    # ...existing code...
     app()
