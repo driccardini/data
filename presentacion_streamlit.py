@@ -1136,6 +1136,58 @@ def render_slide(slide: DeckSlide, total: int) -> None:
             )
             return
 
+    # Slides detallados para cada módulo del portal de datos ECIPSA
+    modulo_slides = {
+        105: {
+            "nombre": "Natania AR",
+            "img": "https://ecipsadatos.azurewebsites.net/static/images/Boton_Natania.png",
+            "desc": "Acceso a reportes y tableros de Argentina. Información financiera, comercial y operativa centralizada para la gestión local.",
+        },
+        106: {
+            "nombre": "Natania PY",
+            "img": "https://ecipsadatos.azurewebsites.net/static/images/Boton_Natania_PY.png",
+            "desc": "Reportes y tableros de Paraguay. Seguimiento de ventas, cobranzas y métricas clave para la operación en Paraguay.",
+        },
+        107: {
+            "nombre": "MilAires",
+            "img": "https://ecipsadatos.azurewebsites.net/static/images/Boton_MilAires.png",
+            "desc": "Tableros y métricas de MilAires. Visualización de KPIs y reportes específicos del proyecto MilAires.",
+        },
+        108: {
+            "nombre": "Ecipsa Report",
+            "img": "https://ecipsadatos.azurewebsites.net/static/images/Boton_ECIPSA.png",
+            "desc": "Reportes corporativos y de gestión. Información consolidada para la toma de decisiones estratégicas.",
+        },
+        109: {
+            "nombre": "Tableros Manuales",
+            "img": "https://ecipsadatos.azurewebsites.net/static/images/Tableros%20Manuales.png",
+            "desc": "Carga y visualización de tableros manuales. Permite incorporar reportes personalizados fuera de los sistemas automáticos.",
+        },
+        110: {
+            "nombre": "Panel de Administración",
+            "img": "https://ecipsadatos.azurewebsites.net/static/images/ModuloAdministrador.png",
+            "desc": "Gestión de usuarios, permisos y configuraciones. Acceso restringido a administradores para el control del portal.",
+        },
+        111: {
+            "nombre": "DataMart",
+            "img": "https://ecipsadatos.azurewebsites.net/static/images/ModuloDataMart.png",
+            "desc": "Centro de módulos y acceso especial a datos. Herramienta avanzada para análisis y extracción de información.",
+        },
+    }
+    if slide.number in modulo_slides:
+        m = modulo_slides[slide.number]
+        st.markdown(
+            f"""
+            <div class='deck-wrap' style='display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;'>
+                <img src='{m['img']}' alt='{m['nombre']}' style='height:70px;margin-bottom:1.2rem;border-radius:14px;box-shadow:0 2px 12px rgba(11,62,83,0.08);'/>
+                <h1 class='deck-title' style='font-size:2.1rem;text-align:center;margin-bottom:0.7rem;'>{escape(m['nombre'])}</h1>
+                <div class='highlight-card' style='max-width:520px;margin:0 auto;font-size:1.13rem;text-align:center;'>{escape(m['desc'])}</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        return
+
     # Piso 10: Funcionalidades y experiencia de usuario del portal
     if slide.number == 104:
             st.markdown(
@@ -1421,6 +1473,18 @@ def app() -> None:
     slides.append(piso_portal_func)
     total = len(slides)
 
+    # Agregar slides detallados de módulos después del slide 104
+    modulo_slides = [
+        DeckSlide(number=105, title="Natania AR", bullets=[]),
+        DeckSlide(number=106, title="Natania PY", bullets=[]),
+        DeckSlide(number=107, title="MilAires", bullets=[]),
+        DeckSlide(number=108, title="Ecipsa Report", bullets=[]),
+        DeckSlide(number=109, title="Tableros Manuales", bullets=[]),
+        DeckSlide(number=110, title="Panel de Administración", bullets=[]),
+        DeckSlide(number=111, title="DataMart", bullets=[]),
+    ]
+    slides.extend(modulo_slides)
+    total = len(slides)
     if "slide_idx" not in st.session_state:
         st.session_state.slide_idx = 0
 
