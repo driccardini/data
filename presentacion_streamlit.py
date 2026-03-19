@@ -1065,20 +1065,20 @@ def render_roadmap_2026(slide: DeckSlide) -> None:
             <div style="position:relative;z-index:1;">
                 <h1 class="deck-title" style="font-size:2.3rem;">🛣️ Roadmap 2026</h1>
                 <ul style='font-size:1.13rem;color:#2E2F2F;max-width:700px;margin:2.2rem auto 1.2rem auto;line-height:1.55;'>
-                    <li>Foco en terminar el proceso de portal de proveedores y lanzar la v2: alta de proveedores y portal de Paraguay.</li>
-                    <li>Relevando funcionalidades para que el portal de licitaciones sea el nuevo portal de clientes y eliminar la app MiNatania.</li>
-                    <li>Impulsar la gestión de obra con tecnología integrada con Dyn y SAP.</li>
-                    <li>Implementación de Genesys en todos los canales de contacto.</li>
-                    <li>Análisis de herramienta de RPA para generar ahorro y mejorar la experiencia de usuario.</li>
-                    <li>Relevamiento de procesos en Administración para eficientizar tareas manuales.</li>
-                    <li>Trabajo conjunto con HR para mejora y automatización de procesos.</li>
-                    <li>Implementación de Asset Management con IT y Arquitectura para automatizar la baja de equipos junto con la baja del colaborador, integrado con Bizneo.</li>
-                    <li>Colaboración con Control de Gestión en procesos de pago y rendición de software contratado con tarjetas corporativas.</li>
-                    <li>Automatización de controles en SAP para desvíos de presupuesto y lo ejecutado.</li>
-                    <li>Evaluación con Compras y Legales de una herramienta de contratos con IA.</li>
-                    <li>Búsqueda con Finanzas y Nuevos Negocios de una herramienta de planificación financiera.</li>
+                    <li>🌐 <b>Portal de Proveedores:</b> Finalizar la digitalización y lanzar la v2, incluyendo alta de proveedores y expansión a Paraguay.</li>
+                    <li>🧑‍💻 <b>Portal de Clientes:</b> Transformar el portal de licitaciones en el nuevo portal de clientes y eliminar la app MiNatania.</li>
+                    <li>🏗️ <b>Gestión de Obra:</b> Integrar tecnología con Dyn y SAP para mayor control y eficiencia en obra.</li>
+                    <li>📞 <b>Genesys:</b> Implementar Genesys en todos los canales de contacto para mejorar la experiencia del cliente.</li>
+                    <li>🤖 <b>Automatización (RPA):</b> Analizar e implementar herramientas de RPA para ahorrar tiempo y mejorar procesos.</li>
+                    <li>📊 <b>Administración:</b> Relevar y optimizar procesos administrativos para reducir tareas manuales.</li>
+                    <li>👥 <b>Recursos Humanos:</b> Colaborar para automatizar y mejorar procesos clave de HR.</li>
+                    <li>💻 <b>Asset Management:</b> Automatizar la baja de equipos junto con la baja del colaborador, integrado con Bizneo, IT y Arquitectura.</li>
+                    <li>💳 <b>Control de Gestión:</b> Mejorar procesos de pago y rendición de software contratado con tarjetas corporativas.</li>
+                    <li>🧾 <b>SAP:</b> Automatizar controles para detectar desvíos de presupuesto y ejecución.</li>
+                    <li>📄 <b>Contratos Inteligentes:</b> Evaluar herramientas con IA para gestión de contratos junto a Compras y Legales.</li>
+                    <li>📈 <b>Planificación Financiera:</b> Buscar e implementar soluciones innovadoras junto a Finanzas y Nuevos Negocios.</li>
                 </ul>
-                <div class="metric-banner" style="margin-top:2.2rem;">🚧 El 2026 será el año de consolidación digital y eficiencia operativa en ECIPSA.</div>
+                <div class="metric-banner" style="margin-top:2.2rem;">🚀 <b>2026:</b> Consolidación digital, eficiencia operativa y experiencia superior para todos los actores de ECIPSA.</div>
             </div>
         </div>
         """,
