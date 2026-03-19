@@ -1126,6 +1126,40 @@ def render_slide(slide: DeckSlide, total: int) -> None:
         render_roadmap_2026(slide)
         return
 
+    # Piso 8: diseño moderno con burbujas para los pilares
+    if slide.number == 102:
+        st.markdown(
+            f"""
+            <div class='deck-wrap'>
+                <h1 class='deck-title' style='font-size:2.3rem;text-align:center;'>🌟 Pilares Estratégicos 2026</h1>
+                <div style='display:grid;grid-template-columns:repeat(2,1fr);gap:2.2rem;max-width:900px;margin:2.5rem auto 1.2rem auto;'>
+                    <div style='background:linear-gradient(120deg,#e9f6fb 0%,#f8fafc 100%);border-radius:2.2rem;padding:2.1rem 1.3rem;box-shadow:0 4px 24px rgba(11,62,83,0.08);text-align:center;display:flex;flex-direction:column;align-items:center;'>
+                        <div style='font-size:2.7rem;margin-bottom:0.7rem;'>⚡</div>
+                        <div style='font-size:1.18rem;font-weight:700;color:#0B3E53;margin-bottom:0.4rem;'>Eficiencia</div>
+                        <div style='font-size:1.01rem;color:#2E2F2F;'>Optimización de recursos y procesos para mayor productividad y menores costos.</div>
+                    </div>
+                    <div style='background:linear-gradient(120deg,#f0f7ff 0%,#eef4f8 100%);border-radius:2.2rem;padding:2.1rem 1.3rem;box-shadow:0 4px 24px rgba(11,62,83,0.08);text-align:center;display:flex;flex-direction:column;align-items:center;'>
+                        <div style='font-size:2.7rem;margin-bottom:0.7rem;'>🏛️</div>
+                        <div style='font-size:1.18rem;font-weight:700;color:#0B3E53;margin-bottom:0.4rem;'>Gobierno de Dato</div>
+                        <div style='font-size:1.01rem;color:#2E2F2F;'>Calidad, trazabilidad y seguridad de la información en todos los procesos.</div>
+                    </div>
+                    <div style='background:linear-gradient(120deg,#f4fbfe 0%,#eef7fb 100%);border-radius:2.2rem;padding:2.1rem 1.3rem;box-shadow:0 4px 24px rgba(11,62,83,0.08);text-align:center;display:flex;flex-direction:column;align-items:center;'>
+                        <div style='font-size:2.7rem;margin-bottom:0.7rem;'>🤖</div>
+                        <div style='font-size:1.18rem;font-weight:700;color:#0B3E53;margin-bottom:0.4rem;'>Automatizaciones</div>
+                        <div style='font-size:1.01rem;color:#2E2F2F;'>Soluciones automáticas para reducir tareas manuales y acelerar flujos de trabajo.</div>
+                    </div>
+                    <div style='background:linear-gradient(120deg,#fff3e8 0%,#f8fafc 100%);border-radius:2.2rem;padding:2.1rem 1.3rem;box-shadow:0 4px 24px rgba(11,62,83,0.08);text-align:center;display:flex;flex-direction:column;align-items:center;'>
+                        <div style='font-size:2.7rem;margin-bottom:0.7rem;'>💡</div>
+                        <div style='font-size:1.18rem;font-weight:700;color:#0B3E53;margin-bottom:0.4rem;'>Valor a Procesos de las Áreas</div>
+                        <div style='font-size:1.01rem;color:#2E2F2F;'>Mejoras tangibles en procesos clave de cada área, generando impacto real en la operación diaria.</div>
+                    </div>
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        return
+
     tam_bullet = "1.35rem"
     tam_titulo = "2.5rem"
     icono = icono_para_slide(slide.title, slide.number)
