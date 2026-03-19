@@ -1069,7 +1069,7 @@ def render_roadmap_2026(slide: DeckSlide) -> None:
                     <li>🧑‍💻 <b>Portal de Clientes:</b> Transformar el portal de licitaciones en el nuevo portal de clientes y eliminar la app MiNatania.</li>
                     <li>🏗️ <b>Gestión de Obra:</b> Integrar tecnología con Dyn y SAP para mayor control y eficiencia en obra.</li>
                     <li>📞 <b>Genesys:</b> Implementar Genesys en todos los canales de contacto para mejorar la experiencia del cliente.</li>
-                    <li>🤖 <b>Automatización (RPA):</b> Analizar e implementar herramientas de RPA para ahorrar tiempo y mejorar procesos.</li>
+                    <li>🤖 <b>Automatización (RPA):</b> Evaluar nuevas herramientas de RPA para ampliar la automatización, ya contamos con una implementada.</li>
                     <li>📊 <b>Administración:</b> Relevar y optimizar procesos administrativos para reducir tareas manuales.</li>
                     <li>👥 <b>Recursos Humanos:</b> Colaborar para automatizar y mejorar procesos clave de HR.</li>
                     <li>💻 <b>Asset Management:</b> Automatizar la baja de equipos junto con la baja del colaborador, integrado con Bizneo, IT y Arquitectura.</li>
