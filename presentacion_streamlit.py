@@ -636,17 +636,19 @@ def render_panel_lateral(slide: DeckSlide) -> None:
         )
         return
 
-    st.markdown(
-        f"""
-        <div class="side-panel-slot">
-            <div class="side-card">
-                <p class="side-title">🧩 Objetivo</p>
-                <p class="side-sub">Bajar esta sección a decisiones concretas y medibles para Dirección.</p>
+    # Hide 'Objetivo' card on last slide (Terraza, slide.number == 102)
+    if slide.number != 102:
+        st.markdown(
+            f"""
+            <div class="side-panel-slot">
+                <div class="side-card">
+                    <p class="side-title">🧩 Objetivo</p>
+                    <p class="side-sub">Bajar esta sección a decisiones concretas y medibles para Dirección.</p>
+                </div>
             </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+            """,
+            unsafe_allow_html=True,
+        )
 
 
 def render_cover(slide: DeckSlide) -> None:
@@ -812,7 +814,7 @@ def render_areas(slide: DeckSlide) -> None:
             <div class="area-grid">
                 {cards_html}
             </div>
-            <div class="metric-banner">🏆 Siete iniciativas estratégicas continúan avanzando para completar la transformación digital del 2025, con foco en automatización de procesos manuales e inteligencia artificial aplicada.</div>
+            <div class="metric-banner">🏆 Ocho iniciativas estratégicas continúan avanzando para completar la transformación digital del 2025, con foco en automatización de procesos manuales e inteligencia artificial aplicada.</div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -1086,58 +1088,213 @@ def render_roadmap_2026(slide: DeckSlide) -> None:
     )
 
 def render_slide(slide: DeckSlide, total: int) -> None:
+    # Slide especial: Terraza (header, fondo, solo GRACIAS)
+    if slide.title == "Terraza":
+        st.markdown(
+            f"""
+            <style>
+            .terraza-bg {{
+                background: url('https://www.ecipsa.com/wp-content/uploads/2021/06/Tower.jpg') center/cover no-repeat;
+                min-height: 80vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+            }}
+            .terraza-gracias {{
+                font-size: 5.2rem;
+                color: #fff;
+                font-weight: 800;
+                text-shadow: 0 4px 24px #0B3E53, 0 1px 0 #F18019;
+                margin-top: 2.5rem;
+                margin-bottom: 2.5rem;
+            }}
+            </style>
+            <div class='terraza-bg'>
+                <div class='terraza-gracias'>GRACIAS</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        return
+    # ...existing code for other slides...
     # Piso 9: Módulos principales del portal de datos ECIPSA
     if slide.number == 103:
-            st.markdown(
-                f"""
-                <div class='deck-wrap'>
-                    <h1 class='deck-title' style='font-size:2.2rem;text-align:center;'>📊 Portal de Datos ECIPSA: Módulos Principales</h1>
-                    <div style='display:grid;grid-template-columns:repeat(2,1fr);gap:2.1rem;max-width:900px;margin:2.5rem auto 1.2rem auto;'>
-                        <div class='highlight-card' style='text-align:center;'>
-                            <div class='highlight-title' style='font-size:1.15rem;'>Natania AR</div>
-                            <img src='https://ecipsadatos.azurewebsites.net/static/images/Boton_Natania.png' alt='Natania AR' style='height:54px;margin:0.7rem auto 0.5rem auto;'/>
-                            <div class='highlight-item'>Acceso a reportes y tableros de Argentina</div>
-                        </div>
-                        <div class='highlight-card' style='text-align:center;'>
-                            <div class='highlight-title' style='font-size:1.15rem;'>Natania PY</div>
-                            <img src='https://ecipsadatos.azurewebsites.net/static/images/Boton_Natania_PY.png' alt='Natania PY' style='height:54px;margin:0.7rem auto 0.5rem auto;'/>
-                            <div class='highlight-item'>Reportes y tableros de Paraguay</div>
-                        </div>
-                        <div class='highlight-card' style='text-align:center;'>
-                            <div class='highlight-title' style='font-size:1.15rem;'>MilAires</div>
-                            <img src='https://ecipsadatos.azurewebsites.net/static/images/Boton_MilAires.png' alt='MilAires' style='height:54px;margin:0.7rem auto 0.5rem auto;'/>
-                            <div class='highlight-item'>Tableros y métricas de MilAires</div>
-                        </div>
-                        <div class='highlight-card' style='text-align:center;'>
-                            <div class='highlight-title' style='font-size:1.15rem;'>Ecipsa Report</div>
-                            <img src='https://ecipsadatos.azurewebsites.net/static/images/Boton_ECIPSA.png' alt='Ecipsa Report' style='height:54px;margin:0.7rem auto 0.5rem auto;'/>
-                            <div class='highlight-item'>Reportes corporativos y de gestión</div>
-                        </div>
-                        <div class='highlight-card' style='text-align:center;'>
-                            <div class='highlight-title' style='font-size:1.15rem;'>Tableros Manuales</div>
-                            <img src='https://ecipsadatos.azurewebsites.net/static/images/Tableros%20Manuales.png' alt='Tableros Manuales' style='height:54px;margin:0.7rem auto 0.5rem auto;'/>
-                            <div class='highlight-item'>Carga y visualización de tableros manuales</div>
-                        </div>
-                        <div class='highlight-card' style='text-align:center;'>
-                            <div class='highlight-title' style='font-size:1.15rem;'>Panel de Administración</div>
-                            <img src='https://ecipsadatos.azurewebsites.net/static/images/ModuloAdministrador.png' alt='Panel de Administración' style='height:54px;margin:0.7rem auto 0.5rem auto;'/>
-                            <div class='highlight-item'>Gestión de usuarios, permisos y configuraciones (solo administradores)</div>
-                        </div>
-                        <div class='highlight-card' style='text-align:center;'>
-                            <div class='highlight-title' style='font-size:1.15rem;'>DataMart</div>
-                            <img src='https://ecipsadatos.azurewebsites.net/static/images/ModuloDataMart.png' alt='DataMart' style='height:54px;margin:0.7rem auto 0.5rem auto;'/>
-                            <div class='highlight-item'>Centro de módulos y acceso especial a datos</div>
-                        </div>
+        st.markdown(
+            f"""
+            <div class='deck-wrap'>
+                <h1 class='deck-title' style='font-size:2.2rem;text-align:center;'>📊 Portal de Datos ECIPSA: Módulos Principales</h1>
+                <div style='display:grid;grid-template-columns:repeat(2,1fr);gap:2.1rem;max-width:900px;margin:2.5rem auto 1.2rem auto;'>
+                    <div class='highlight-card' style='text-align:center;'>
+                        <div class='highlight-title' style='font-size:1.15rem;'>Natania AR</div>
+                        <img src='https://ecipsadatos.azurewebsites.net/static/images/Boton_Natania.png' alt='Natania AR' style='height:54px;margin:0.7rem auto 0.5rem auto;'/>
+                        <div class='highlight-item'>Acceso a reportes y tableros de Argentina</div>
                     </div>
-                    <div class='metric-banner' style='margin-top:2.2rem;'>🔑 Acceso a módulos según permisos y perfil de usuario.</div>
+                    <div class='highlight-card' style='text-align:center;'>
+                        <div class='highlight-title' style='font-size:1.15rem;'>Natania PY</div>
+                        <img src='https://ecipsadatos.azurewebsites.net/static/images/Boton_Natania_PY.png' alt='Natania PY' style='height:54px;margin:0.7rem auto 0.5rem auto;'/>
+                        <div class='highlight-item'>Reportes y tableros de Paraguay</div>
+                    </div>
+                    <div class='highlight-card' style='text-align:center;'>
+                        <div class='highlight-title' style='font-size:1.15rem;'>MilAires</div>
+                        <img src='https://ecipsadatos.azurewebsites.net/static/images/Boton_MilAires.png' alt='MilAires' style='height:54px;margin:0.7rem auto 0.5rem auto;'/>
+                        <div class='highlight-item'>Tableros y métricas de MilAires</div>
+                    </div>
+                    <div class='highlight-card' style='text-align:center;'>
+                        <div class='highlight-title' style='font-size:1.15rem;'>Ecipsa Report</div>
+                        <img src='https://ecipsadatos.azurewebsites.net/static/images/Boton_ECIPSA.png' alt='Ecipsa Report' style='height:54px;margin:0.7rem auto 0.5rem auto;'/>
+                        <div class='highlight-item'>Reportes corporativos y de gestión</div>
+                    </div>
+                    <div class='highlight-card' style='text-align:center;'>
+                        <div class='highlight-title' style='font-size:1.15rem;'>Tableros Manuales</div>
+                        <img src='https://ecipsadatos.azurewebsites.net/static/images/Tableros%20Manuales.png' alt='Tableros Manuales' style='height:54px;margin:0.7rem auto 0.5rem auto;'/>
+                        <div class='highlight-item'>Carga y visualización de tableros manuales</div>
+                    </div>
+                    <div class='highlight-card' style='text-align:center;'>
+                        <div class='highlight-title' style='font-size:1.15rem;'>Panel de Administración</div>
+                        <img src='https://ecipsadatos.azurewebsites.net/static/images/ModuloAdministrador.png' alt='Panel de Administración' style='height:54px;margin:0.7rem auto 0.5rem auto;'/>
+                        <div class='highlight-item'>Gestión de usuarios, permisos y configuraciones (solo administradores)</div>
+                    </div>
+                    <div class='highlight-card' style='text-align:center;'>
+                        <div class='highlight-title' style='font-size:1.15rem;'>DataMart</div>
+                        <img src='https://ecipsadatos.azurewebsites.net/static/images/ModuloDataMart.png' alt='DataMart' style='height:54px;margin:0.7rem auto 0.5rem auto;'/>
+                        <div class='highlight-item'>Centro de módulos y acceso especial a datos</div>
+                    </div>
                 </div>
-                """,
-                unsafe_allow_html=True,
-            )
-            return
+                <div class='metric-banner' style='margin-top:2.2rem;'>🔑 Acceso a módulos según permisos y perfil de usuario.</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        return
 
     # Slides detallados para cada módulo del portal de datos ECIPSA
-    # ...existing code...
+    modulo_slides = {
+        105: {
+            "nombre": "Natania AR",
+            "img": "https://ecipsadatos.azurewebsites.net/static/images/Boton_Natania.png",
+            "desc": "Acceso a reportes y tableros de Argentina. Información financiera, comercial y operativa centralizada para la gestión local.",
+        },
+        106: {
+            "nombre": "Natania PY",
+            "img": "https://ecipsadatos.azurewebsites.net/static/images/Boton_Natania_PY.png",
+            "desc": "Reportes y tableros de Paraguay. Seguimiento de ventas, cobranzas y métricas clave para la operación en Paraguay.",
+        },
+        107: {
+            "nombre": "MilAires",
+            "img": "https://ecipsadatos.azurewebsites.net/static/images/Boton_MilAires.png",
+            "desc": "Tableros y métricas de MilAires. Visualización de KPIs y reportes específicos del proyecto MilAires.",
+        },
+        108: {
+            "nombre": "Ecipsa Report",
+            "img": "https://ecipsadatos.azurewebsites.net/static/images/Boton_ECIPSA.png",
+            "desc": "Reportes corporativos y de gestión. Información consolidada para la toma de decisiones estratégicas.",
+        },
+        109: {
+            "nombre": "Tableros Manuales",
+            "img": "https://ecipsadatos.azurewebsites.net/static/images/Tableros%20Manuales.png",
+            "desc": "Carga y visualización de tableros manuales. Permite incorporar reportes personalizados fuera de los sistemas automáticos.",
+        },
+        110: {
+            "nombre": "Panel de Administración",
+            "img": "https://ecipsadatos.azurewebsites.net/static/images/ModuloAdministrador.png",
+            "desc": "Gestión de usuarios, permisos y configuraciones. Acceso restringido a administradores para el control del portal.",
+        },
+        111: {
+            "nombre": "DataMart",
+            "img": "https://ecipsadatos.azurewebsites.net/static/images/ModuloDataMart.png",
+            "desc": "Centro de módulos y acceso especial a datos. Herramienta avanzada para análisis y extracción de información.",
+        },
+    }
+    if slide.number in modulo_slides:
+        m = modulo_slides[slide.number]
+        # Add detailed report mapping for Natania AR, Natania PY, and MilAires
+        report_html = ""
+        if slide.number == 105:
+            report_html = """
+            <div class='highlight-card' style='margin-top:1.2rem;'>
+                <div class='highlight-title' style='font-size:1.08rem;'>Reportes internos</div>
+                <ul class='highlight-list' style='text-align:left;'>
+                    <li class='highlight-item'><b>Comercial</b>
+                        <ul>
+                            <li>Ventas Planes - Argentina</li>
+                            <li>Ventas Directa - Argentina</li>
+                            <li>Reporte de Ingresos - Captación Argentina</li>
+                        </ul>
+                    </li>
+                    <li class='highlight-item'><b>Gestión de Clientes</b>
+                        <ul>
+                            <li>Saldos - PE&amp;E</li>
+                            <li>Reporte Cupones Cobrados Argentina</li>
+                            <li>Plan por Porcentaje - Minuta de Cancelación</li>
+                            <li>Ingresos Financieros Argentina</li>
+                            <li>Ingresos Administración Argentina</li>
+                            <li>Alto Plan - Minuta de Cancelación</li>
+                        </ul>
+                    </li>
+                    <li class='highlight-item'><b>Otros</b>
+                        <ul>
+                            <li>Usage Metrics Report</li>
+                            <li>Reporte de Stock - Argentina</li>
+                            <li>Ingresos Históricos</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            """
+        elif slide.number == 106:
+            report_html = """
+            <div class='highlight-card' style='margin-top:1.2rem;'>
+                <div class='highlight-title' style='font-size:1.08rem;'>Reportes internos</div>
+                <ul class='highlight-list' style='text-align:left;'>
+                    <li class='highlight-item'><b>Comercial</b>
+                        <ul>
+                            <li>Ventas Planes - Paraguay</li>
+                            <li>Ventas Directa - Paraguay</li>
+                            <li>Reporte de Ingresos - Captación Paraguay</li>
+                        </ul>
+                    </li>
+                    <li class='highlight-item'><b>Gestión de Clientes</b>
+                        <ul>
+                            <li>Reporte Cupones Cobrados Paraguay</li>
+                            <li>Ingresos Financieros Paraguay</li>
+                            <li>Ingresos Administración Paraguay</li>
+                        </ul>
+                    </li>
+                    <li class='highlight-item'><b>Otros</b>
+                        <ul>
+                            <li>Reporte de Stock - Paraguay</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            """
+        elif slide.number == 107:
+            report_html = """
+            <div class='highlight-card' style='margin-top:1.2rem;'>
+                <div class='highlight-title' style='font-size:1.08rem;'>Reportes internos</div>
+                <ul class='highlight-list' style='text-align:left;'>
+                    <li class='highlight-item'>Stock y Precios</li>
+                    <li class='highlight-item'>Saldos MilAires</li>
+                    <li class='highlight-item'>Reporte Pago cupones</li>
+                    <li class='highlight-item'>Reporte Facturación</li>
+                    <li class='highlight-item'>Ingresos Financieros</li>
+                </ul>
+            </div>
+            """
+        st.markdown(
+            f"""
+            <div class='deck-wrap' style='display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;'>
+                <img src='{m['img']}' alt='{m['nombre']}' style='height:70px;margin-bottom:1.2rem;border-radius:14px;box-shadow:0 2px 12px rgba(11,62,83,0.08);'/>
+                <h1 class='deck-title' style='font-size:2.1rem;text-align:center;margin-bottom:0.7rem;'>{escape(m['nombre'])}</h1>
+                <div class='highlight-card' style='max-width:520px;margin:0 auto;font-size:1.13rem;text-align:center;'>{escape(m['desc'])}</div>
+                {report_html}
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        return
 
     # Piso 10: Funcionalidades y experiencia de usuario del portal
     if slide.number == 104:
@@ -1351,18 +1508,29 @@ def render_navegacion_obra(actual: int, total: int) -> None:
         + "</svg>"
     )
 
-    icono = "🏗️" if actual < total else "🏢"
-    piso_txt = "Planta baja" if actual == 1 else f"Piso {actual - 1}"
-
-    st.markdown(
-        f"""
-        <div class="obra-wrap">
-            <div class="obra-head">{icono} {piso_txt} &mdash; slide {actual} de {total}</div>
-            {svg}
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+    if actual == total:
+        # Terraza
+        st.markdown(
+            f"""
+            <div class="obra-wrap">
+                <div class="obra-head">🏢 Terraza &mdash; slide {total} de {total}</div>
+                {svg}
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+    else:
+        icono = "🏗️"
+        piso_txt = "Planta baja" if actual == 1 else f"Piso {actual - 1}"
+        st.markdown(
+            f"""
+            <div class="obra-wrap">
+                <div class="obra-head">{icono} {piso_txt} &mdash; slide {actual} de {total}</div>
+                {svg}
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
 
 def app() -> None:
@@ -1406,14 +1574,11 @@ def app() -> None:
         ]
     )
     slides.append(piso_pilares)
-    # Eliminar slides de IA Aplicada, Riesgos Clave, Roadmap 2026 (piso 11), y Decisiones Solicitadas a Dirección
     TITULOS_A_BORRAR = [
-        "Inteligencia Artificial Aplicada",
-        "⚠️ Riesgos Clave y Mitigación",
-        "🛣️ Roadmap 2026",
-        "✅ Decisiones Solicitadas a Dirección"
+        "🤖 Inteligencia Artificial Aplicada",
+        "⚠️ Riesgos Clave y Mitigación"
     ]
-    slides += [s for s in _all if s.number not in _front_order and s.title.strip() not in TITULOS_A_BORRAR]
+    slides += [s for s in _all if s.number not in _front_order and s.number not in [7, 8, 9, 10] and s.title.strip() not in TITULOS_A_BORRAR]
 
     # Agregar slides piso 9 y 10 del portal de datos
     piso_portal_modulos = DeckSlide(
@@ -1432,16 +1597,58 @@ def app() -> None:
     total = len(slides)
 
     # Agregar slides detallados de módulos después del slide 104
+    # (Movemos la terraza al final absoluto, después de todos los slides)
+
     modulo_slides = [
         DeckSlide(number=105, title="Natania AR", bullets=[]),
         DeckSlide(number=106, title="Natania PY", bullets=[]),
         DeckSlide(number=107, title="MilAires", bullets=[]),
         DeckSlide(number=108, title="Ecipsa Report", bullets=[]),
+        DeckSlide(number=109, title="Tableros Manuales", bullets=[]),
+        DeckSlide(number=110, title="Panel de Administración", bullets=[]),
+        DeckSlide(number=111, title="DataMart", bullets=[]),
     ]
     slides.extend(modulo_slides)
+    # Ahora sí, la terraza va al final absoluto
+    piso_terraza = DeckSlide(
+        number=999,
+        title="Terraza",
+        bullets=["¡Gracias por acompañarnos en este recorrido!", "ECIPSA - Real Estate con propósito"]
+    )
+    slides.append(piso_terraza)
     total = len(slides)
     if "slide_idx" not in st.session_state:
         st.session_state.slide_idx = 0
-    
-    # ...existing code...
+
+    # Procesar navegacion ANTES de renderizar para que la slide correcta aparezca al primer click
+    if st.session_state.get("_nav") == "prev":
+        st.session_state.slide_idx = max(0, st.session_state.slide_idx - 1)
+        del st.session_state["_nav"]
+    elif st.session_state.get("_nav") == "next":
+        st.session_state.slide_idx = min(total - 1, st.session_state.slide_idx + 1)
+        del st.session_state["_nav"]
+
+    render_fondo_app(FONDO_TOWER)
+
+
+    content_l, content_r = st.columns([3.2, 1.2])
+    with content_l:
+        render_slide(slides[st.session_state.slide_idx], total)
+    with content_r:
+        render_panel_lateral(slides[st.session_state.slide_idx])
+        render_navegacion_obra(st.session_state.slide_idx + 1, total)
+        nav_l, _, nav_r = st.columns([1, 1.2, 1])
+        with nav_l:
+            if st.button("◀", use_container_width=True):
+                st.session_state["_nav"] = "prev"
+                st.rerun()
+        with nav_r:
+            if st.button("▶", use_container_width=True):
+                st.session_state["_nav"] = "next"
+                st.rerun()
+
+    st.progress((st.session_state.slide_idx + 1) / total)
+
+
+if __name__ == "__main__":
     app()
