@@ -868,54 +868,33 @@ def render_herramienta_obra(slide: DeckSlide) -> None:
         """
         <div class="deck-wrap">
             <h1 class="deck-title" style="font-size:2.3rem;">🏗️ ECIPSA Obra Hub</h1>
-            <div class="solution-group">
-                <div class="solution-group-head">
-                    <div>
-                        <p class="solution-group-title">Portal único de gestión de obra</p>
-                        <p class="solution-group-sub">Tres capacidades incluidas dentro de una misma solución para proveedores, seguimiento y control interno.</p>
-                    </div>
-                    <span class="solution-pill">3 módulos integrados</span>
+            <div class="solution-grid" style="grid-template-columns: repeat(2, 1fr); gap: 1.2rem; margin-top: 1.5rem;">
+                <div class="area-card">
+                    <div class="area-card-title">⚡ Eficiencia</div>
+                    <ul class="area-card-list">
+                        <li class="area-card-item">Optimización de recursos y procesos para lograr mayor productividad y menores costos en la gestión de obra.</li>
+                    </ul>
                 </div>
-                <div class="solution-grid" style="align-items:end;">
-                    <div class="area-card">
-                        <div class="area-card-title">📄 1. Gestión documental</div>
-                        <ul class="area-card-list">
-                            <li class="area-card-item">Herramienta para que los proveedores puedan interactuar con Ecipsa subiendo planos y documentación necesaria para trabajar.</li>
-                        </ul>
-                        <div style='margin-top:auto;'>
-                            <span style='font-size:0.85rem;font-weight:700;color:#009AC4;'>70% · Relevado, con propuestas comerciales de 3 proveedores</span>
-                            <div style='background:#e8edf0;border-radius:99px;height:7px;overflow:hidden;margin-top:0.18rem;'>
-                                <div style='background:#009AC4;width:70%;height:7px;border-radius:99px;'></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="area-card">
-                        <div class="area-card-title">🏗️ 2. Dirección de obra</div>
-                        <ul class="area-card-list">
-                            <li class="area-card-item">Herramienta para poder darle seguimiento a la obra constructiva y que los proveedores puedan ir actualizando el avance de la misma.</li>
-                        </ul>
-                        <div style='margin-top:auto;'>
-                            <span style='font-size:0.85rem;font-weight:700;color:#F18019;'>15% · En análisis junto con el equipo de obra de Córdoba</span>
-                            <div style='background:#e8edf0;border-radius:99px;height:7px;overflow:hidden;margin-top:0.18rem;'>
-                                <div style='background:#F18019;width:15%;height:7px;border-radius:99px;'></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="area-card">
-                        <div class="area-card-title">💰 3. Gestión de costos de obra</div>
-                        <ul class="area-card-list">
-                            <li class="area-card-item">Herramienta interna para poder calcular los costos correctos de la obra.</li>
-                        </ul>
-                        <div style='margin-top:auto;'>
-                            <span style='font-size:0.85rem;font-weight:700;color:#0B3E53;'>20% · En análisis</span>
-                            <div style='background:#e8edf0;border-radius:99px;height:7px;overflow:hidden;margin-top:0.18rem;'>
-                                <div style='background:#0B3E53;width:20%;height:7px;border-radius:99px;'></div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="area-card">
+                    <div class="area-card-title">🏛️ Gobierno de Dato</div>
+                    <ul class="area-card-list">
+                        <li class="area-card-item">Implementación de prácticas y herramientas para asegurar la calidad, trazabilidad y seguridad de la información en todos los procesos.</li>
+                    </ul>
+                </div>
+                <div class="area-card">
+                    <div class="area-card-title">🤖 Automatizaciones</div>
+                    <ul class="area-card-list">
+                        <li class="area-card-item">Desarrollo e integración de soluciones automáticas para reducir tareas manuales y acelerar los flujos de trabajo.</li>
+                    </ul>
+                </div>
+                <div class="area-card">
+                    <div class="area-card-title">💡 Valor a Procesos de las Áreas</div>
+                    <ul class="area-card-list">
+                        <li class="area-card-item">Acompañar a cada área en la identificación y mejora de procesos clave, generando impacto tangible en su operación diaria.</li>
+                    </ul>
                 </div>
             </div>
-            <div class="metric-banner">🏆 Estas tres herramientas van a converger en una sola solución: ECIPSA Obra Hub.</div>
+            <div class="metric-banner">🎯 Los próximos pasos estarán enfocados en estos 4 pilares para potenciar la gestión y resultados de ECIPSA Obra Hub.</div>
         </div>
         """,
         unsafe_allow_html=True,
